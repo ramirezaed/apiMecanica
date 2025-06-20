@@ -25,7 +25,7 @@ class TurnoDao {
   }
   async buscarPorId(turnoID: string) {
     try {
-      const turnoBuscado = await Turno.findById(turnoID);
+      const turnoBuscado = await Turno.findById(turnoID).populate("servicio");
       return turnoBuscado;
     } catch (error) {
       throw Error((error as Error).message);
@@ -44,7 +44,9 @@ class TurnoDao {
 
   async buscarUsuarioTurno(usuarioId: string) {
     try {
-      const turnoUsuario = await Turno.find({ usuarioId }).sort({ fecha: 1 });
+      const turnoUsuario = await Turno.find({ usuarioId })
+        .sort({ fecha: 1 })
+        .populate("servicio");
       return turnoUsuario;
     } catch (error) {
       throw Error((error as Error).message);

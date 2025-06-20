@@ -72,7 +72,7 @@ class TurnoServicio {
             ...turno,
             fecha: fechaTurno, // Se guarda como Date (UTC)
             codigo_turno: qrCode,
-            servicio: turno.servicioID || null,
+            servicioID: turno.servicioID || null,
           });
 
           await nuevoTurno.save();

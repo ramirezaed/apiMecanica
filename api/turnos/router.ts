@@ -21,6 +21,7 @@ const {
 turnoRouter.post("/nuevo", crearTurno);
 turnoRouter.get("/buscarCodigo", vendedorRoutes, buscarPorCodigo);
 turnoRouter.get("/lista", vendedorRoutes, mostrarTodos);
+// turnoRouter.get("/lista", mostrarTodos);
 turnoRouter.put("/editar/:id", vendedorRoutes, editarTurno);
 turnoRouter.get("/buscarFecha", vendedorRoutes, buscarporFecha);
 turnoRouter.post("/cancelar", cancelarTurno);

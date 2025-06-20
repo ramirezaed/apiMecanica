@@ -7,7 +7,11 @@ export interface Iturno {
   apellido: string;
   email: string;
   telefono: string;
-  servicioID: string;
+  // servicioID: string;
+  servicioID: {
+    servicioID: string;
+    precio: string;
+  };
   tipo_vehiculo: string;
   modelo: string;
   matricula: string;
