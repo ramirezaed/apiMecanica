@@ -20,6 +20,9 @@ app.use("/api", router);
 
 dbConnect(); //me conecto a la base de dato abstraida
 
-app.listen(PORT, HOST, () => {
-  console.log(`server is runnin en http://${HOST}:${PORT}`);
+// app.listen(PORT, HOST, () => {
+//   console.log(`server is runnin en http://${HOST}:${PORT}`);
+// });
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
