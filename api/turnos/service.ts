@@ -124,10 +124,10 @@ class TurnoServicio {
     try {
       // const turnos = await mostrarTodos(pagina, limite)
       const turnos = await mostrarTodos();
-      if (!turnos || turnos.length === 0) {
-        throw new Error("no hay turnos");
-      }
-      return turnos;
+      // if (!turnos || turnos.length === 0) {
+      //   throw new Error("no hay turnos");
+      //}
+      return turnos || [];
     } catch (error) {
       throw Error((error as Error).message);
     }
