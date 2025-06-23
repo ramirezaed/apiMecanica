@@ -1,6 +1,7 @@
 import { servicioController } from "./controller";
 import express from "express";
 import { vendedorRoutes } from "../../middlewares/vendeMiddleware";
+import { adminRoutes } from "../../middlewares/adminMiddleware";
 
 const {
   crearServicio,
@@ -22,7 +23,7 @@ servicioRouter.get("/buscarNombre", vendedorRoutes, buscarNombre);
 servicioRouter.put("/editar/:id", vendedorRoutes, editarServicio);
 servicioRouter.put("/baja/:id", vendedorRoutes, bajaServicio);
 servicioRouter.put("/alta/:id", vendedorRoutes, altaServicio);
-servicioRouter.get("/lista", mostrarTodos);
+servicioRouter.get("/lista", vendedorRoutes, mostrarTodos);
 servicioRouter.get("/activos", Activos);
 servicioRouter.get("/inactivos", vendedorRoutes, Inactivos);
 
