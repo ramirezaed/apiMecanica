@@ -13,6 +13,7 @@ const {
   buscarUsuarioTurno,
   cambiarEstado,
   editarTurno,
+  eliminarTodos,
 } = turnoServicio;
 
 class TurnoController {
@@ -23,7 +24,7 @@ class TurnoController {
       const turno = await crearTurno(Datosturno);
       // 👉 Ahora buscamos ese turno y "rellenamos" el servicio asociado
       const turnoConServicio = await Turno.findById(turno._id).populate(
-        "servicio"
+        "servicio",
       );
 
       return res.status(201).json(turnoConServicio);
@@ -119,6 +120,14 @@ class TurnoController {
       const { estado_turno } = req.body;
       const turnoModificado = await cambiarEstado(id, estado_turno);
       return res.status(200).json(turnoModificado);
+    } catch (error) {
+      return res.status(400).json({ error: (error as Error).message });
+    }
+  }
+  async eliminarTodos(req: Request, res: Response) {
+    try {
+      const result = await eliminarTodos();
+      return res.status(200).json("eliminados");
     } catch (error) {
       return res.status(400).json({ error: (error as Error).message });
     }

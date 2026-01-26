@@ -84,9 +84,17 @@ class TurnoDao {
       const turnoModificado = await Turno.findByIdAndUpdate(
         id,
         { estado_turno },
-        { new: true }
+        { new: true },
       );
       return turnoModificado;
+    } catch (error) {
+      throw Error((error as Error).message);
+    }
+  }
+  async eliminarTodos() {
+    try {
+      const result = await Turno.deleteMany();
+      return result;
     } catch (error) {
       throw Error((error as Error).message);
     }

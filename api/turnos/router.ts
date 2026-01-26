@@ -16,6 +16,7 @@ const {
   buscarUsuarioTurno,
   cambiarEstado,
   editarTurno,
+  eliminarTodos,
 } = turnoController;
 
 turnoRouter.post("/nuevo", crearTurno);
@@ -29,5 +30,5 @@ turnoRouter.get("/buscar/:id", buscarPorId);
 turnoRouter.get("/buscarUsuarioTurno/:id", buscarUsuarioTurno);
 turnoRouter.get("/turser", obtenerturno);
 turnoRouter.put("/cambiarEstado/:id", vendedorRoutes, cambiarEstado);
-
+turnoRouter.delete("/eliminar", eliminarTodos);
 export default turnoRouter;

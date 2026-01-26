@@ -14,6 +14,7 @@ const {
   buscarPorId,
   buscarUsuarioTurno,
   cambiarEstado,
+  eliminarTodos,
 } = turnoDao;
 
 class TurnoServicio {
@@ -76,6 +77,26 @@ class TurnoServicio {
           });
 
           await nuevoTurno.save();
+          /////////////////////////////////////////////////////////////////////////////////
+          fetch("http://localhost:5678/webhook-test/turno-creado", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              turnoId: nuevoTurno._id,
+              nombre: nuevoTurno.nombre,
+              apellido: nuevoTurno.apellido,
+              fecha: nuevoTurno.fecha,
+              email: nuevoTurno.email,
+              telefono: nuevoTurno.telefono,
+              tipo_vehiculo: nuevoTurno.tipo_vehiculo,
+              modelo: nuevoTurno.modelo,
+              matricula: nuevoTurno.matricula,
+            }),
+          })
+            .then(() => console.log("Webhook enviado a n8n"))
+            .catch((err) =>
+              console.error("Error enviando webhook a n8n:", err),
+            );
 
           // 7. Devolver respuesta con hora local formateada
           return {
@@ -235,6 +256,14 @@ class TurnoServicio {
         throw new Error("error al modificar turnos");
       }
       return turnoModificado;
+    } catch (error) {
+      throw Error((error as Error).message);
+    }
+  }
+  async eliminarTodos() {
+    try {
+      const result = await eliminarTodos();
+      return result;
     } catch (error) {
       throw Error((error as Error).message);
     }

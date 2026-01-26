@@ -133,18 +133,6 @@ class UsuarioServicio {
     }
   }
 
-  // async mostrarTodos (){
-  //     try {
-  //         const mostrar =await mostrarTodos()
-  //         if (!mostrar || mostrar.length === 0){
-  //             throw new Error ("no hay usuarios registrados")
-  //         }
-  //         return mostrar
-  //     } catch (error) {
-  //         throw Error ((error as Error).message)
-  //     }
-  // }
-
   async buscarPorId(id: string) {
     try {
       const usuario = id;
